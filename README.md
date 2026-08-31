@@ -26,7 +26,7 @@ The project also looks at whether the emotional tone of each track shifts depend
 
 ### Linguistic presence per song
 
-![Linguistic Presence](./Linguistic_Presence_Graph.png)
+<img src="./Linguistic_Presence_Graph.png" width="550">
 
 | Song | Korean | English | Spanish | French | Japanese |
 |---|---|---|---|---|---|
@@ -38,7 +38,7 @@ The project also looks at whether the emotional tone of each track shifts depend
 
 ### Sentiment per song
 
-![Sentiment Analysis](./Sentiment_Analysis_Graph.png)
+<img src="./Sentiment_Analysis_Graph.png" width="550">
 
 | Song | Positive | Negative | Neutral |
 |---|---|---|---|
