@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Song lyrics (copyrighted content — never commit these)
+*_lyrics.txt
