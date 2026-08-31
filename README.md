@@ -50,15 +50,15 @@ The project also looks at whether the emotional tone of each track shifts depend
 
 ## Interpretation
 
-**On the guiding question — the lyrics tell a different story than the marketing.** English dominates every track, ranging from 67% to as high as 98% of lines (*GRLS*). Korean plays a clearly secondary role, peaking at 23.3% in *Flip-Flop Girl*, and French appears only marginally (2%, exclusively in *GRLS*). **Japanese was not detected in any of the five tracks.** In other words, the "multilingual fusion" the group is promoted on seems to live mainly in the group's visual/promotional concept and possibly in the audio production style, rather than in the lyrics themselves (**at least for this debut EP**).
+**The lyrics tell a different story than the marketing**: English dominates every track, ranging from 67% to as high as 98% of lines (*GRLS*). Korean plays a clearly secondary role, peaking at 23.3% in *Flip-Flop Girl*, and French appears only marginally (2%, exclusively in *GRLS*). **Japanese was not detected in any of the five tracks.** In other words, the "multilingual fusion" the group is promoted on seems to live mainly in the group's visual/promotional concept and possibly in the audio production style, rather than in the lyrics themselves (**at least for this debut EP**).
 
-**On sentiment**, most lines across the album are classified as neutral (43–82%), which is fairly typical of short pop lyric lines lacking strong emotional context on their own. Two tracks stand out: *Flip-Flop Girl* has the most upbeat profile (48.3% positive, only 5% negative), while *Echo* is the clear outlier with the album's highest negative share (19.5%) and almost no positive lines (2.4%) — suggesting a more melancholic tone that contrasts with the rest of the EP.
+**On sentiment**: most lines across the album are classified as neutral (43–82%), which is fairly typical of short pop lyric lines lacking strong emotional context on their own. Two tracks stand out: *Flip-Flop Girl* has the most upbeat profile (48.3% positive, only 5% negative), while *Echo* is the clear outlier with the album's highest negative share (19.5%) and almost no positive lines (2.4%) — suggesting a more melancholic tone that contrasts with the rest of the EP.
 
 ## Limitations
 
-- **Spanish and French detections are likely false positives.** : there's no indication TUIDE recorded any lyrics in Spanish; the model's Spanish predictions (up to 17.9% in *SUN KISS*) were most likely short ad-libs or phonetically ambiguous lines misclassified due to the line-by-line, out-of-context approach. This wasn't manually verified line by line and should be treated as a known weakness of the method, not a confirmed finding;
-- **Very small sample.** : five songs is not enough to generalize about the artist or genre beyond this specific EP. Since they are a novel group, this analysis could be extended in the future for obtaining a more precise answer;
-- **Line-level classification lacks context.** : both language detection and sentiment models were applied to isolated single lines, which is harder than analyzing full passages — short or ambiguous lines are more error-prone.
+- **Spanish and French detections are likely false positives**: there is no indication TUIDE recorded any lyrics in Spanish or French; the model's predictions (Spanish up to 17.9% in *SUN KISS* and French around 2% in *GRLS*) were most likely short ad-libs or phonetically ambiguous lines misclassified due to the line-by-line, out-of-context approach. This was manually verified line by line and should be treated as a known weakness;
+- **Very small sample**: five songs is not enough to generalize about the artist or genre beyond this specific EP. Since they are a novel group, this analysis could be extended in the future for obtaining a more precise answer;
+- **Line-level classification lacks context**: both language detection and sentiment models were applied to isolated single lines, which is harder than analyzing full passages — short or ambiguous lines are more error-prone.
 
 
 ## Reproducing this analysis
