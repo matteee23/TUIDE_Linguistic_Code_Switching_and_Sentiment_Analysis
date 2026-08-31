@@ -1,4 +1,4 @@
-# TUIDE — Linguistic Code-Switching & Sentiment Analysis
+# TUIDE: Linguistic Code-Switching & Sentiment Analysis
 
 ## Overview and Motivation
 
