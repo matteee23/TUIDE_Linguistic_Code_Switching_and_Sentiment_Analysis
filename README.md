@@ -2,30 +2,27 @@
 
 ## Overview and Motivation
 
-TUIDE's debut has been marketed around the idea of blending different musical languages and visually presented as multilingual, drawing on Korean, English, Japanese, Spanish and French. This project asks a simple question:
+TUIDE's debut has been thought with the idea of blending different musical languages and strong performances on the stages. The question that I want to answer to is:
 
-> **Do the lyrics of the five tracks on *Tune & Play* actually confirm this multilingual fusion and if so, in what proportion and how does it vary from song to song?**
+> **Do the lyrics of the five tracks on *Tune & Play* confirm this multilingual fusion and if so, in what proportion and how does it changes from song to song?**
 
-The project also looks at whether the emotional tone of each track shifts depending on which language is being used within it.
+The project also looks at how the emotional tone of each track is characterized.
 
 ## Data & Methodology
-
-- **Source**: Lyrics for the five tracks (*ABD*, *SUN KISS*, *Echo*, *Flip-Flop Girl*, *GRLS*) were collected from Genius website;
-- **Copyright note**: raw lyrics are **not included in this repository** and are excluded via `.gitignore`. Only aggregated, derived statistics (percentages, sentiment scores, charts) are published here. To reproduce the analysis, you'll need to source the lyrics yourself and place them locally as `.txt` files, one per song;
-- **Unit of analysis**: each song was split line by line, and every line was analyzed independently for both language and sentiment.
+* **source**: lyrics for the five tracks (*ABD*, *SUN KISS*, *Echo*, *Flip-Flop Girl*, *GRLS*) were collected from Genius website;
+* **copyright note**: raw lyrics are **not included in this repository** and are excluded via `.gitignore`. To reproduce the analysis, you'll need to source the lyrics yourself and place them locally as `.txt` files, one per song;
+* **unit of analysis**: each song was split line by line and every line was analyzed independently for both language and sentiment.
 
 ## Tools & Models
-
 | Task | Tool / Model |
 |---|---|
 | Language detection | [`lingua-py`](https://github.com/pemistahl/lingua-py), restricted to English, Spanish, French, Korean, and Japanese |
-| Sentiment analysis | Hugging Face `transformers` pipeline [`cardiffnlp/twitter-xlm-roberta-base-sentiment`](https://huggingface.co/cardiffnlp/twitter-xlm-roberta-base-sentiment), a multilingual model producing 3-class labels (positive / negative / neutral) |
-| Aggregation | Python (`collections.Counter`) for per-song percentages |
+| Sentiment analysis | [`cardiffnlp/twitter-xlm-roberta-base-sentiment`](https://huggingface.co/cardiffnlp/twitter-xlm-roberta-base-sentiment) |
+| Aggregation | Python (`collections.Counter`) |
 
 ## Results
 
 ### Linguistic presence per song
-
 <img src="./Linguistic_Presence_Graph.png" width="550">
 
 | Song | Korean | English | Spanish | French | Japanese |
@@ -37,7 +34,6 @@ The project also looks at whether the emotional tone of each track shifts depend
 | GRLS | 0% | 98.0% | 0% | 2.0% | 0% |
 
 ### Sentiment per song
-
 <img src="./Sentiment_Analysis_Graph.png" width="550">
 
 | Song | Positive | Negative | Neutral |
@@ -49,24 +45,20 @@ The project also looks at whether the emotional tone of each track shifts depend
 | GRLS | 18.0% | 0% | 82.0% |
 
 ## Interpretation
+* **multilingual fusion**: English dominates every track, ranging from 67% to 98% of lines. Korean plays a secondary role, peaking at 23.3% in *Flip-Flop Girl*, and French appears only marginally (2%, exclusively in *GRLS*). **Japanese was not detected in any of the five tracks.** Basically, the "multilingual fusion" of the group is promoted, for now, only in the group's visual/promotional concept, rather than in the lyrics themselves (**at least for this debut EP**);
 
-**The lyrics tell a different story than the marketing**: English dominates every track, ranging from 67% to as high as 98% of lines (*GRLS*). Korean plays a clearly secondary role, peaking at 23.3% in *Flip-Flop Girl*, and French appears only marginally (2%, exclusively in *GRLS*). **Japanese was not detected in any of the five tracks.** In other words, the "multilingual fusion" the group is promoted on seems to live mainly in the group's visual/promotional concept and possibly in the audio production style, rather than in the lyrics themselves (**at least for this debut EP**).
-
-**On sentiment**: most lines across the album are classified as neutral (43–82%), which is fairly typical of short pop lyric lines lacking strong emotional context on their own. Two tracks stand out: *Flip-Flop Girl* has the most upbeat profile (48.3% positive, only 5% negative), while *Echo* is the clear outlier with the album's highest negative share (19.5%) and almost no positive lines (2.4%) — suggesting a more melancholic tone that contrasts with the rest of the EP.
+* **sentiment**: majority of the lines in the album are classified as neutral (43–82%). Two tracks have to be put in evidence: *Flip-Flop Girl* has the most "positive" profile (48.3% positive, only 5% negative), while *Echo* has the album's highest negative share (19.5%) and almost no positive lines (2.4%), suggesting a more melancholic tone that contrasts with the rest of the EP.
 
 ## Limitations
-
-- **Spanish and French detections are likely false positives**: there is no indication TUIDE recorded any lyrics in Spanish or French; the model's predictions (Spanish up to 17.9% in *SUN KISS* and French around 2% in *GRLS*) were most likely short ad-libs or phonetically ambiguous lines misclassified due to the line-by-line, out-of-context approach. This was manually verified line by line and should be treated as a known weakness;
-- **Very small sample**: five songs is not enough to generalize about the artist or genre beyond this specific EP. Since they are a novel group, this analysis could be extended in the future for obtaining a more precise answer;
-- **Line-level classification lacks context**: both language detection and sentiment models were applied to isolated single lines, which is harder than analyzing full passages — short or ambiguous lines are more error-prone.
-
+- **Spanish and French detections are probably false positives**: until now, TUIDE didn't record any lyrics in Spanish or French. The model's predictions (Spanish up to 17.9% in *SUN KISS* and French around 2% in *GRLS*) were phonetically ambiguous lines misclassified due to the line-by-line, out-of-context approach. This was manually verified line by line and should be treated as a known weakness;
+- **small sample**: five songs is not enough to generalize about the artist or genre beyond this specific EP. Since they are a novel group, this analysis could be extended in the future for obtaining a more precise answer;
+- **single lines approach**: both language detection and sentiment models were applied to single lines, which is harder because short or ambiguous lines are more error-prone.
 
 ## Reproducing this analysis
-
-1. Get lyrics for the five tracks (e.g. via the Genius API) and save them locally as `ABD_lyrics.txt`, `SUNKISS_lyrics.txt`, `Echo_lyrics.txt`, `Flip_Flop_Girl_lyrics.txt`, `GRLS_lyrics.txt`: these files are gitignored and must be sourced independently for copyright reasons;
+1. Get lyrics for the five tracks and save them locally as `ABD_lyrics.txt`, `SUNKISS_lyrics.txt`, `Echo_lyrics.txt`, `Flip_Flop_Girl_lyrics.txt`, `GRLS_lyrics.txt`: these files are gitignored and must be sourced independently for copyright reasons;
 2. Install dependencies: `pip install lingua-language-detector transformers torch`;
 3. Run `TUIDE_LD.py`.
 
 ## License
 
-Code in this repository is released under the MIT License. Song lyrics are not included and remain the property of their respective rights holders.
+Code released under the MIT License. Song lyrics are not included and remain the property of their respective rights holders.
